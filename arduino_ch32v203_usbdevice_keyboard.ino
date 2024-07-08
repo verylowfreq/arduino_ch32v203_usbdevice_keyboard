@@ -1,25 +1,11 @@
-/********************************** (C) COPYRIGHT *******************************
-* File Name          : main.c
-* Author             : WCH
-* Version            : V1.0.0
-* Date               : 2021/08/08
-* Description        : Main program body.
-*********************************************************************************
-* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
-* Attention: This software (modified or not) and binary are used for 
-* microcontroller manufactured by Nanjing Qinheng Microelectronics.
-*******************************************************************************/ 
-
-/* Modified and ported to Arduino by Mitsumine Suzu (C) 2024 */
-
 /** USB keyboard
  * 
  * Connection:
- *      (INPUT)  PA0, PA1, PA2, PA3: Pin--Switch--GND
+ *      (INPUT)  PA15, PB3, PB4, PB5: Pin--Switch--GND
  *      (OUTPUT) PA5, PA6, PA7 :     Pin--LED--GND
  * 
  * Key assign:
- *      PA0: 'w', PA2: 'a', PA3: 's', PA4: 'd'
+ *      PA15: 'w', PB4: 'a', PB5: 's', PA4: 'd'
  * 
  * LED of Keyboard status:
  *      PA5: CapsLock, PA6: Num, PA7: ScrollLock
@@ -55,10 +41,10 @@ void setup() {
     Keyboard.init();
 
     // Init GPIOs for key input
-    pinMode(PA0, INPUT_PULLUP);
-    pinMode(PA1, INPUT_PULLUP);
-    pinMode(PA2, INPUT_PULLUP);
-    pinMode(PA3, INPUT_PULLUP);
+    pinMode(PA15, INPUT_PULLUP);
+    pinMode(PB3, INPUT_PULLUP);
+    pinMode(PB4, INPUT_PULLUP);
+    pinMode(PB5, INPUT_PULLUP);
 
     // Init GPIOs for LED
     pinMode(PA5, OUTPUT);
@@ -69,22 +55,22 @@ void setup() {
 
 void loop() {
 
-    if (digitalRead(PA0) == LOW) {
+    if (digitalRead(PA15) == LOW) {
         Keyboard.press(KEYCODE_W);
     } else {
         Keyboard.release(KEYCODE_W);
     }
-    if (digitalRead(PA1) == LOW) {
+    if (digitalRead(PB3) == LOW) {
         Keyboard.press(KEYCODE_A);
     } else {
         Keyboard.release(KEYCODE_A);
     }
-    if (digitalRead(PA2) == LOW) {
+    if (digitalRead(PB4) == LOW) {
         Keyboard.press(KEYCODE_S);
     } else {
         Keyboard.release(KEYCODE_S);
     }
-    if (digitalRead(PA3) == LOW) {
+    if (digitalRead(PB5) == LOW) {
         Keyboard.press(KEYCODE_D);
     } else {
         Keyboard.release(KEYCODE_D);
